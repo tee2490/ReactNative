@@ -13,6 +13,12 @@ export default function App() {
     ]);
   }
 
+  function deleteGoalHandler(index) {
+    var data = [...courseGoals];
+    data.splice(index, 1);
+    setCourseGoals(data);
+  }
+
   return (
     <View style={styles.container}>
       <GoalInput addGoalHandler={addGoalHandler} />
@@ -20,7 +26,12 @@ export default function App() {
         <FlatList
           data={courseGoals}
           renderItem={(ItemData) => {
-            return <GoalItem ItemData={ItemData} />;
+            return (
+              <GoalItem
+                ItemData={ItemData}
+                deleteGoalHandler={deleteGoalHandler}
+              />
+            );
           }}
           keyExtractor={(item, index) => index}
         />
