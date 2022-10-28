@@ -4,23 +4,25 @@ import React from "react";
 export default function GoalItem(props) {
   const { ItemData, deleteGoalHandler } = props;
   return (
-    <Pressable onPress={() => deleteGoalHandler(ItemData.index)}>
-      <View style={styles.goalItem}>
+    <View style={styles.goalItem}>
+      <Pressable
+        android_ripple={{ color: "#dddddd" }}
+        onPress={() => deleteGoalHandler(ItemData.index)}
+      >
         <Text style={styles.goalText}>{ItemData.item}</Text>
-      </View>
-    </Pressable>
+      </Pressable>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   goalItem: {
     margin: 8,
-    padding: 8,
     borderRadius: 5,
     backgroundColor: "#5e0acc",
-    color: "white",
   },
   goalText: {
     color: "white",
+    padding: 8,
   },
 });

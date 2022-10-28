@@ -1,4 +1,4 @@
-import { StyleSheet, TextInput, Button, View } from "react-native";
+import { StyleSheet, TextInput, Button, View, Modal } from "react-native";
 import React, { useState } from "react";
 
 export default function GoalInput(props) {
@@ -14,33 +14,50 @@ export default function GoalInput(props) {
   }
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.textInput}
-        placeholder="Your course goal"
-        onChangeText={goalInputHandler}
-        value={enterGoalText}
-      />
-      <Button title="Add Goal" onPress={onAddGoalHandler} />
-    </View>
+    <Modal animationType="slide" visible={props.visible}>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Your course goal"
+          onChangeText={goalInputHandler}
+          value={enterGoalText}
+        />
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button title="Add Goal" onPress={onAddGoalHandler} />
+          </View>
+          <View style={styles.button}>
+            <Button title="Cancel" onPress={props.onCancel} />
+          </View>
+        </View>
+      </View>
+    </Modal>
   );
 }
 
 const styles = StyleSheet.create({
   inputContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
     borderBottomWidth: 1,
     borderBottomColor: "#cccccc",
-    paddingBottom: 20,
+    padding: 20,
   },
   textInput: {
-    flex: 1,
-    width: "70%",
+    alignContent: "center",
+    width: "100%",
     borderWidth: 1,
     borderColor: "#cccccc",
     borderRadius: 5,
-    marginRight: 8,
     padding: 8,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    paddingTop: 10,
+  },
+  button: {
+    marginHorizontal: 8,
+    width: "40%",
   },
 });
