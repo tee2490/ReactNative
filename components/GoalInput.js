@@ -5,6 +5,7 @@ import {
   View,
   Modal,
   Image,
+  Dimensions,
 } from "react-native";
 import React, { useState } from "react";
 
@@ -50,10 +51,13 @@ export default function GoalInput(props) {
   );
 }
 
+const DeviceHeight = Dimensions.get("window").height;
+console.log(DeviceHeight);
+
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: DeviceHeight < 450 ? "flex-start" : "center",
     alignItems: "center",
     padding: 20,
     backgroundColor: "#311b6b",
@@ -77,8 +81,8 @@ const styles = StyleSheet.create({
     width: "40%",
   },
   image: {
-    width: 100,
-    height: 100,
-    margin: 20,
+    width: DeviceHeight < 450 ? 150 : 100,
+    height: DeviceHeight < 450 ? 150 : 100,
+    margin: DeviceHeight < 450 ? 10 : 20,
   },
 });

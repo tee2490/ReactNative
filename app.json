@@ -3,7 +3,7 @@
     "name": "goals-app",
     "slug": "goals-app",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "backgroundColor": "#311b6b",
     "userInterfaceStyle": "light",
